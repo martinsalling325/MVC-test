@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestChickenBone.Models;
 
 namespace TestChickenBone.Controllers
 {
@@ -25,6 +26,21 @@ namespace TestChickenBone.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        
+        public ActionResult Demo()
+        {
+            var person = new Person()
+            {
+                FirstName = "Stefan",
+                LastName = "Korfitz",
+                Age = 36
+            };
+            
+            ViewBag.Message = "Your demo page.";
+            ViewData["Person"] = person;
+
+            return View("~/Views/Home/Demo.cshtml", person);
         }
     }
 }
